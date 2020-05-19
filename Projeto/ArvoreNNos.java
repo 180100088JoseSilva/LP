@@ -3,10 +3,10 @@ package NfilhosArvore;
 public class ArvoreNNos implements GeralTree{
 	
 	private Funcionario raiz;
-	private int[] saida = new int[0];
+	private String[] saida = new String[0];
 
 	@Override
-	public Funcionario inserir(int num) {
+	public Funcionario inserir(String num) {
 		// TODO Auto-generated method stub
 		if(raiz == null) {
 			Funcionario novo = new Funcionario(num);
@@ -18,7 +18,7 @@ public class ArvoreNNos implements GeralTree{
 	}
 
 	@Override
-	public Funcionario inserir(int num, Funcionario pai) {
+	public Funcionario inserir(String num, Funcionario pai) {
 		// TODO Auto-generated method stub
 		Funcionario novo = new Funcionario(num);
 		if(pai==null) {
@@ -30,15 +30,15 @@ public class ArvoreNNos implements GeralTree{
 	}
 
 	@Override
-	public int[] preOrder() {
+	public String[] preOrder() {
 		// TODO Auto-generated method stub
 		if(raiz == null) {
-			return new int[0];
+			return new String[0];
 		}
 		return preOrder(raiz);
 	}
 	
-	private int[] preOrder(Funcionario raiz) {
+	private String[] preOrder(Funcionario raiz) {
 		addFilhos(saida, raiz.getConteudo());
 		if(raiz!=null) {
 			for(int i=0; i<raiz.getFilhosNos().size(); i++) {
@@ -49,12 +49,12 @@ public class ArvoreNNos implements GeralTree{
 		return saida;
 	}
 	
-	private void addFilhos(int[] sai, int novo) {
-		int[] temp = new int [sai.length+1];
-		for (int i =0;i<sai.length;i++) {
-			temp[i]=sai[i];         
-		}         
-		temp[temp.length-1]=novo;
+	private void addFilhos(String sai[], String string) {
+		String[] temp = new String [sai.length+1];
+		for (int i =0; i<sai.length; i++) {
+			temp[i]=sai[i];
+		}
+		temp[temp.length-1]=string;
 		saida=temp;
 	}
 	
