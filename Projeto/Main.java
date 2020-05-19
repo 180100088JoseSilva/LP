@@ -8,8 +8,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		ArvoreNNos t = new ArvoreNNos();
 		
-		Funcionario t1 = t.inserir(2);
-		t.inserir(3, t1);
+		Funcionario t1 = t.inserir("Ola");
+		t.inserir("Gente", t1);
 		
 		
 		
