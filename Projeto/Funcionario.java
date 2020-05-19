@@ -4,25 +4,25 @@ import java.util.ArrayList;
 
 public class Funcionario {
 	//Atributos
-	private int conteudo;
+	private String tarefa;
 	private ArrayList<Funcionario> filhosNos = new ArrayList<Funcionario>();
 	
 	//Construtores
 	public Funcionario(){
-		this.conteudo=0;
+		this.tarefa="";
 		this.filhosNos = null;
 	}
-	public Funcionario(int c){
-		this.conteudo=c;
+	public Funcionario(String c){
+		this.tarefa=c;
 	}
 	
 	//Acessores
-	public int getConteudo() {
-		return conteudo;
+	public String getConteudo() {
+		return tarefa;
 	}
 
-	public void setConteudo(int conteudo) {
-		this.conteudo = conteudo;
+	public void setConteudo(String conteudo) {
+		this.tarefa = conteudo;
 	}
 
 	public ArrayList<Funcionario> getFilhosNos() {
@@ -34,7 +34,7 @@ public class Funcionario {
 	}
 	@Override
 	public String toString() {
-		return "No [conteudo=" + conteudo + ", filhosNos=" + filhosNos + "]";
+		return "No [conteudo=" + tarefa + ", filhosNos=" + filhosNos + "]";
 	}
 
 }
