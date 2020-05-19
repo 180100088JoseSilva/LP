@@ -8,7 +8,7 @@ public interface GeralTree {
 	 * @return  uma referencia para o novo no raiz da arvore
 	 * @throws  IllegalStateException se a arvore nao estiver vazia
 	 */
-	public Funcionario inserir( int num );
+	public Funcionario inserir( String num );
 	
 	
 	/**
@@ -19,7 +19,7 @@ public interface GeralTree {
 	 * @return      uma referencia para o no criado na arvore
 	 * @throws      NullPointerException se o pai for igual a null 
 	 */
-	public Funcionario inserir( int num, Funcionario pai );
+	public Funcionario inserir( String num, Funcionario pai );
 	
 	
 	/**
@@ -27,5 +27,5 @@ public interface GeralTree {
 	 *  
 	 * @return um array dos valores inteiros que estao nos nos por ordem de visita 
 	 */
-	public int[] preOrder();
+	public String[] preOrder();
 }
