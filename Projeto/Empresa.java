@@ -6,10 +6,10 @@ public class Empresa{
 	private String[] saida = new String[0];
 
 	
-	public Funcionario inserir(String num) {
+	public Funcionario inserir(int num, String nome) {
 		// TODO Auto-generated method stub
 		if(raiz == null) {
-			Funcionario novo = new Funcionario(num);
+			Funcionario novo = new Funcionario();
 			raiz = novo;
 		}else {
 			throw new IllegalStateException("  ");
@@ -38,10 +38,10 @@ public class Empresa{
 	}
 	
 	private String[] preOrder(Funcionario raiz) {
-		addFilhos(saida, raiz.getConteudo());
+		addFilhos(saida, raiz.getNome());
 		if(raiz!=null) {
-			for(int i=0; i<raiz.getFilhosNos().size(); i++) {
-				preOrder(raiz.getFilhosNos().get(i));
+			for(int i=0; i<raiz.getSubordinados().size(); i++) {
+				preOrder(raiz.getSubordinados().get(i));
 			}
 		}
 		
@@ -58,3 +58,8 @@ public class Empresa{
 	}
 	
 }
+/*
+ * Procurar Funcionario no meio da Arvore hierarquica da empresa
+ * Atribuir cargos aos funcionarios e hierarquizá-los
+ * Apenas os cargos acima do funcionário é que lhe podem atribuir tarefas
+*/
