@@ -14,6 +14,8 @@ public class Funcionario {
 	private int quantasTarefasFaltam;
 	private ArrayList<Funcionario> subordinados = new ArrayList<Funcionario>();
 	
+	
+
 	//Construtores
 	public Funcionario() {
 		this.id =0;
@@ -46,6 +48,10 @@ public class Funcionario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public ArrayList<Funcionario> getSubordinados() {
+		return subordinados;
 	}
 	
 	//metodos
