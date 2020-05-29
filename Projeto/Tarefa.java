@@ -1,4 +1,4 @@
-package NfilhosArvore;
+package Projeto;
 
 public class Tarefa {
 	
@@ -11,13 +11,18 @@ public class Tarefa {
 		tarefa = "";
 		proximo = null;
 	}
-	
-	//Acessores
-	
 	public Tarefa(String tarefa, Tarefa proximo) {
 		this.tarefa=tarefa;
 		this.proximo=proximo;
 	}
+	
+	public Tarefa(String tarefa) {
+		this.tarefa = tarefa;
+		this.proximo = null;
+	}
+	//Acessores
+	
+	
 
 	public String getTarefa() {
 		return tarefa;
