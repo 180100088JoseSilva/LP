@@ -1,4 +1,6 @@
-package NfilhosArvore;
+package Projeto;
+
+import java.util.ArrayList;
 
 public class Empresa{
 	
@@ -6,18 +8,39 @@ public class Empresa{
 	private String[] saida = new String[0];
 
 	
-	public Funcionario inserir(int num, String nome) {
-		// TODO Auto-generated method stub
-		if(raiz == null) {
-			Funcionario novo = new Funcionario();
-			raiz = novo;
+	public	Funcionario inserir(Funcionario adicionarF, Funcionario BossF) {
+		if(raiz==null) {
+			raiz = adicionarF;
 		}else {
-			throw new IllegalStateException("  ");
+			BossF.getSubordinados().add(adicionarF);
 		}
-		return raiz;
+		return adicionarF;
 	}
-
-	public Funcionario inserir(String num, Funcionario pai) {
+	
+	private Funcionario procurar(Funcionario funcionario, int id) {//Depois fazer para o nome,m so trocar int para string
+		if(funcionario!=null) {
+			if(funcionario.getId()==id) {
+				return funcionario;
+			}else {
+				
+				ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
+				funcionarios = funcionario.getSubordinados(); 
+			    Funcionario res = null;
+			    for (int i = 0; res == null && i < funcionarios.size(); i++) {         
+			        res = procurar(funcionarios.get(i), id);
+			    }
+			    return res;
+			}
+		}
+		return funcionario;
+	}
+	
+	public Funcionario procurar(int id) {
+		return procurar(raiz, id);
+	}
+	
+	
+	/*public Funcionario inserir(String num, Funcionario pai) {
 		// TODO Auto-generated method stub
 		Funcionario novo = new Funcionario();
 		if(pai==null) {
@@ -27,7 +50,7 @@ public class Empresa{
 		}
 		return novo;
 	}
-
+*/
 	
 	public String[] preOrder() {
 		// TODO Auto-generated method stub
@@ -58,8 +81,3 @@ public class Empresa{
 	}
 	
 }
-/*
- * Procurar Funcionario no meio da Arvore hierarquica da empresa
- * Atribuir cargos aos funcionarios e hierarquizá-los
- * Apenas os cargos acima do funcionário é que lhe podem atribuir tarefas
-*/
