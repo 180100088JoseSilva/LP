@@ -1,4 +1,4 @@
-package NfilhosArvore;
+package Projeto;
 
 import java.util.ArrayList;
 import java.util.EmptyStackException;
@@ -7,6 +7,7 @@ import java.util.EmptyStackException;
 
 public class Funcionario {
 	//Atributos
+	private String cargo;
 	private int id;
 	private String nome;
 	private Tarefa inicial;
@@ -18,6 +19,7 @@ public class Funcionario {
 
 	//Construtores
 	public Funcionario() {
+		this.cargo="";
 		this.id =0;
 		this.nome ="";
 		this.inicial=null;
@@ -25,12 +27,13 @@ public class Funcionario {
 		this.subordinados=null;
 	}
 	
-	public Funcionario(int id, String nome) {
+	public Funcionario(int id, String nome, String cargo) {
+		this.cargo = cargo;
 		this.id=id;
 		this.nome=nome;
 		this.inicial=null;
 		this.ultima=null;
-		this.subordinados=null;
+		this.subordinados=new ArrayList<Funcionario>();
 	}
 	
 	//Acessores
@@ -54,15 +57,45 @@ public class Funcionario {
 		return subordinados;
 	}
 	
-	//metodos
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
 	
+	public Tarefa getInicial() {
+		return inicial;
+	}
+
+	public void setInicial(Tarefa inicial) {
+		this.inicial = inicial;
+	}
+
+	public Tarefa getUltima() {
+		return ultima;
+	}
+
+	public void setUltima(Tarefa ultima) {
+		this.ultima = ultima;
+	}
+
+	public int getQuantasTarefasFaltam() {
+		return quantasTarefasFaltam;
+	}
+
+	public void setSubordinados(ArrayList<Funcionario> subordinados) {
+		this.subordinados = subordinados;
+	}
+
 	public void addFuncionario(Funcionario novo) {
 	    subordinados.add(novo);
 	}
 	
-	public void addTarefa(int i) {
+	public void addTarefa(String tarefa) {
 		// TODO Auto-generated method stub
-		Tarefa nova = new Tarefa();
+		Tarefa nova = new Tarefa(tarefa);
 		if(estaVazia()) {
 			inicial = nova;
 			ultima = nova;
@@ -70,6 +103,19 @@ public class Funcionario {
 		else {
 			ultima.setProximo(nova);
 			ultima = nova;
+		}
+		quantasTarefasFaltam++;
+	}
+	public void addTarefa(String tarefa, Funcionario f) {
+		// TODO Auto-generated method stub
+		Tarefa nova = new Tarefa(tarefa);
+		if(f.estaVazia()) {
+			inicial = nova;
+			ultima = nova;
+		}
+		else {
+			f.getUltima().setProximo(nova);
+			f.ultima = nova;
 		}
 		quantasTarefasFaltam++;
 	}
