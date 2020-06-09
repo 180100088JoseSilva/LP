@@ -7,7 +7,6 @@ import java.util.EmptyStackException;
 
 public class Funcionario {
 	//Atributos
-	private String cargo;
 	private int id;
 	private String nome;
 	private Tarefa inicial;
@@ -19,7 +18,6 @@ public class Funcionario {
 
 	//Construtores
 	public Funcionario() {
-		this.cargo="";
 		this.id =0;
 		this.nome ="";
 		this.inicial=null;
@@ -27,8 +25,7 @@ public class Funcionario {
 		this.subordinados=null;
 	}
 	
-	public Funcionario(int id, String nome, String cargo) {
-		this.cargo = cargo;
+	public Funcionario(int id, String nome) {
 		this.id=id;
 		this.nome=nome;
 		this.inicial=null;
@@ -57,13 +54,6 @@ public class Funcionario {
 		return subordinados;
 	}
 	
-	public String getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
-	}
 	
 	public Tarefa getInicial() {
 		return inicial;
@@ -89,13 +79,25 @@ public class Funcionario {
 		this.subordinados = subordinados;
 	}
 
-	public void addFuncionario(Funcionario novo) {
+	
+	
+	
+	//Métodos
+	public  void addFuncionario(int i, String n) {
+		Funcionario novo = new Funcionario(i, n);
+		addFuncionario(novo);
+	}
+	private void addFuncionario(Funcionario novo) {
 	    subordinados.add(novo);
 	}
 	
 	public void addTarefa(String tarefa) {
+		Tarefa t = new Tarefa(tarefa);
+		addTarefa(t);
+	}
+	private void addTarefa(Tarefa t) {
 		// TODO Auto-generated method stub
-		Tarefa nova = new Tarefa(tarefa);
+		Tarefa nova = new Tarefa();
 		if(estaVazia()) {
 			inicial = nova;
 			ultima = nova;
@@ -106,6 +108,7 @@ public class Funcionario {
 		}
 		quantasTarefasFaltam++;
 	}
+	
 	public void addTarefa(String tarefa, Funcionario f) {
 		// TODO Auto-generated method stub
 		Tarefa nova = new Tarefa(tarefa);
@@ -123,7 +126,9 @@ public class Funcionario {
 	public String obterPrimeiraTarefa() {
 		// TODO Auto-generated method stub
 		if(estaVazia()) {
-			throw new EmptyStackException();
+			String a;
+			a = "Estás livre, não tens mais nada para fazer";
+			return a;
 		}else {
 			return inicial.getTarefa();
 		}
