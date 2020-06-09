@@ -80,6 +80,3 @@ public class Empresa{
 	}
 	
 }
-/*
- * Apenas os cargos acima do funcionário é que lhe podem atribuir tarefas
-*/
