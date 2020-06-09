@@ -2,6 +2,9 @@ package Projeto;
 
 import java.util.ArrayList;
 
+import java.util.Arrays;
+
+
 public class Empresa{
 	
 	private Funcionario raiz;
@@ -35,22 +38,12 @@ public class Empresa{
 		return funcionario;
 	}
 	
+
+
 	public Funcionario procurar(int id) {
 		return procurar(raiz, id);
 	}
 	
-	
-	/*public Funcionario inserir(String num, Funcionario pai) {
-		// TODO Auto-generated method stub
-		Funcionario novo = new Funcionario();
-		if(pai==null) {
-			throw new NullPointerException();
-		}else {
-			pai.addFuncionario(novo);
-		}
-		return novo;
-	}
-*/
 	
 	public String[] preOrder() {
 		// TODO Auto-generated method stub
@@ -61,7 +54,7 @@ public class Empresa{
 	}
 	
 	private String[] preOrder(Funcionario raiz) {
-		addFilhos(saida, raiz.getNome());
+		addFuncionarios(saida, raiz.getNome());
 		if(raiz!=null) {
 			for(int i=0; i<raiz.getSubordinados().size(); i++) {
 				preOrder(raiz.getSubordinados().get(i));
@@ -71,7 +64,8 @@ public class Empresa{
 		return saida;
 	}
 	
-	private void addFilhos(String sai[], String string) {
+	
+	private void addFuncionarios(String sai[], String string) {
 		String[] temp = new String [sai.length+1];
 		for (int i =0; i<sai.length; i++) {
 			temp[i]=sai[i];
@@ -80,4 +74,12 @@ public class Empresa{
 		saida=temp;
 	}
 	
+	@Override
+	public String toString() {
+		return "Empresa [raiz=" + raiz + ", saida=" + Arrays.toString(saida) + "]";
+	}
+	
 }
+/*
+ * Apenas os cargos acima do funcionário é que lhe podem atribuir tarefas
+*/
